@@ -1,0 +1,7 @@
+name: Outbreak
+type: theme
+libraries:
+  - outbreak/global-styling
+base theme: classy
+description: "Theme for the outbreak website"
+core: 8.x
