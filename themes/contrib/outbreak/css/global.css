@@ -10,6 +10,7 @@
 div#block-outbreak-sitebranding img {
     padding: 0px 10px;
     width: 100px;
+    height: 100%;
 }
 
 div#block-outbreak-headertitle {
@@ -128,7 +129,7 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form--inline .form-actions {
 
 .region.region-primary-menu a.main-menu-mobile-link:hover,
 .region.region-primary-menu a.main-menu-mobile-link:focus {
-    text-decoration: none;
+    text-decoration: underline;
     margin-left: .6em;
     display: inline-block;
     font-weight: bold;
