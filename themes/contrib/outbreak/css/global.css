@@ -8,11 +8,16 @@
 }
 
 div#block-outbreak-sitebranding img {
-    width: 150px;
+    padding: 0px 10px;
+    width: 100px;
 }
 
 div#block-outbreak-headertitle {
-    width: calc(100% - 150px);
+    width: calc(100% - 120px);
+}
+
+div#block-outbreak-headertitle h2 {
+    font-size: 22px;
 }
 
 nav#block-toplinks {
@@ -40,6 +45,11 @@ nav#block-toplinks a,
 nav#block-toplinks a:visited {
     color: white;
     text-decoration: none;
+}
+
+nav#block-toplinks a:hover,
+nav#block-toplinks a:focus {
+    text-decoration: underline;
 }
 
 div#block-outbreak-exposedformcontent-searchpage-1 {
@@ -116,6 +126,14 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form--inline .form-actions {
     font-weight: bold;
 }
 
+.region.region-primary-menu a.main-menu-mobile-link:hover,
+.region.region-primary-menu a.main-menu-mobile-link:focus {
+    text-decoration: none;
+    margin-left: .6em;
+    display: inline-block;
+    font-weight: bold;
+}
+
 .region.region-primary-menu span.main-menu-mobile-icon {
     border: 1px solid #c17565;
     padding: 8px 11px 5px;
@@ -168,7 +186,8 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form--inline .form-actions {
     text-decoration: none;
 }
 
-.region.region-primary-menu li.menu-item a:hover {
+.region.region-primary-menu li.menu-item a:hover,
+.region.region-primary-menu li.menu-item a:focus {
     background: rgba(0, 0, 0, .5);
 }
 
@@ -192,7 +211,8 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form--inline .form-actions {
     font-weight: bold;
 }
 
-.region.region-primary-menu span.sub-menu-arrow:hover {
+.region.region-primary-menu span.sub-menu-arrow:hover,
+.region.region-primary-menu span.sub-menu-arrow:focus {
     background: rgba(0,0,0,.5);
 }
 
@@ -213,27 +233,120 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form--inline .form-actions {
     padding-left: 15px;
 }
 
-.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item a:hover {
+.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item a:hover,
+.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item a:focus {
     background: rgba(0,0,0,.3);
+}
+
+/* BREADCRUMB */
+nav.breadcrumb {
+    display: none;
+    background: #fae9d3;
+    padding-top: 8px;
+    padding-top: .5em;
+    padding-left: 16px;
+    padding-left: 1em;
+}
+
+nav.breadcrumb a {
+    color: #8e3e2e;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav.breadcrumb a:hover,
+nav.breadcrumb a:focus {
+    text-decoration: underline;
 }
 
 /* MAIN */
 main {
     background: #fae9d3;
+    font-size: .875rem;
 }
 
+main h1,
+main h2,
+main h3 {
+    margin: .5em 0 .3em;
+}
+
+main h1 {
+    color: #8e3e2e;
+    font-size: 30px;
+    font-size: 1.875rem;
+    font-weight: normal;
+    line-height: 36px;
+    line-height: 2rem;
+}
+
+main h2 {
+    color: #8c4d39;
+    font-size: 24px;
+    font-size: 1.5rem;
+    font-weight: normal;
+}
+
+main h3 {
+    color: #343434;
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+main a {
+    color: #bb523d;
+    text-decoration: underline;
+}
+
+main a:hover,
+main a:focus {
+    color: black;
+    text-decoration: underline;
+}
+
+
 /* FIRST REGION (LEFT) */
-.layout__region.layout__region--first a.main-menu-mobile-link {
+.layout__region.layout__region--first {
     display: none;
 }
 
-/* FOOTER */
-.region.region-footer {
-    background: #343434;
+/* SECOND REGION (RIGHT) */
+.layout--twocol > .layout__region--second {
+    flex: 0 1 100%;
+    background: white;
+    padding: 10px;
+    padding: 0.625em;
 }
 
-.region.region-footer a,
-.region.region-footer a.is-active
- {
+/* FOOTER */
+footer {
+    background: #343434;
+    border-top: 10px solid #e7d7b3;
+    padding-bottom: 20px;
+}
+
+footer a {
     color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover,
+footer a:focus {
+    text-decoration: underline;
+}
+
+footer .menu {
+    margin-left: 0px;
+    margin-bottom: 0px;
+}
+
+footer .menu-item {
+    text-align: center;
+    margin: 0.5em 0;
+}
+
+footer .menu-item:last-child {
+    margin: 0;
 }
