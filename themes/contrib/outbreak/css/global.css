@@ -81,6 +81,11 @@ div#block-outbreak-exposedformcontent-searchpage-1 input {
     border: none;
     padding-top: .6em;
     padding-bottom: .6em;
+    
+}
+
+div#block-outbreak-exposedformcontent-searchpage-1 input[type="text"] {
+    color: black;
 }
 
 div#block-outbreak-exposedformcontent-searchpage-1 div#edit-actions {
@@ -306,7 +311,6 @@ main a:focus {
     text-decoration: underline;
 }
 
-
 /* FIRST REGION (LEFT) */
 .layout__region.layout__region--first {
     display: none;
@@ -350,4 +354,38 @@ footer .menu-item {
 
 footer .menu-item:last-child {
     margin: 0;
+}
+
+/* Components */
+
+/* Node list */
+main .paragraph--type--node-list > div > div.field__item {
+    background: #e7d7b3;
+    border: 1px solid #bb533e;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+main .paragraph--type--node-list > div > div.field__item:hover,
+main .paragraph--type--node-list > div > div.field__item:hover a {
+    transition: all 0.2s ease-in;
+    color: white;
+}
+
+main .paragraph--type--node-list > div > div.field__item:hover {
+    background: #bb523d;
+}
+
+main .paragraph--type--node-list img {
+    width: 100%;
+    height: 100%;
+}
+
+main .paragraph--type--node-list > div > div.field__item a {
+    text-decoration: none;
+}
+
+main .paragraph--type--node-list > div > div.field__item a:hover,
+main .paragraph--type--node-list > div > div.field__item a:focus {
+    text-decoration: underline;
 }
