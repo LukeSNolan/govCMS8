@@ -15,7 +15,6 @@ div#block-outbreak-sitebranding {
 div#block-outbreak-sitebranding img {
     padding: 0px 10px;
     width: 100px;
-    height: 100%;
 }
 
 div#block-outbreak-sitebranding a {
@@ -29,14 +28,6 @@ div#block-outbreak-sitebranding a {
 div#block-outbreak-sitebranding a:hover {
     text-decoration: underline;
 }
-
-/*div#block-outbreak-headertitle {
-    width: calc(100% - 120px);
-}
-
-div#block-outbreak-headertitle h2 {
-    font-size: 22px;
-}*/
 
 nav#block-toplinks {
     width: 100%;
@@ -123,10 +114,6 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="submit"] {
     border: 1px solid #3d3d3d;
 }
 
-/*div#block-outbreak-exposedformcontent-searchpage-1 .form--inline .form-actions {
-    clear: none;
-}*/
-
 /* PRIMARY MENU */
 .region.region-primary-menu {
     background: #a3311a;
@@ -211,6 +198,7 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="submit"] {
 .region.region-primary-menu li.menu-item a:hover,
 .region.region-primary-menu li.menu-item a:focus {
     background: rgba(0, 0, 0, .5);
+    transition: background .2s ease-in;
 }
 
 .region.region-primary-menu .menu-item-wrapper {
@@ -220,8 +208,13 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="submit"] {
     margin-bottom: 2px;
 }
 
-.region.region-primary-menu .menu-item-wrapper>a {
+.region.region-primary-menu .menu-item-wrapper > a {
     flex: 15;
+}
+
+.region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--active-trail > a,
+.region.region-primary-menu li.menu-item--active-trail > .menu-item-wrapper > a {
+    background: rgba(0,0,0,.5);
 }
 
 .region.region-primary-menu span.sub-menu-arrow {
@@ -236,6 +229,7 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="submit"] {
 .region.region-primary-menu span.sub-menu-arrow:hover,
 .region.region-primary-menu span.sub-menu-arrow:focus {
     background: rgba(0,0,0,.5);
+    transition: background .2s ease-in;
 }
 
 .region.region-primary-menu ul.menu ul.menu {
@@ -243,21 +237,22 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="submit"] {
     margin: 0px;
 }
 
-.region.region-primary-menu ul.menu ul.mobile-menu-expanded {
+.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded {
     display: block;
 }
 
-.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item {
+.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item {
     background: rgba(0,0,0,.4);
 }
 
-.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item a {
+.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item a {
     padding-left: 15px;
 }
 
-.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item a:hover,
-.region.region-primary-menu ul.menu ul.mobile-menu-expanded li.menu-item a:focus {
+.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item a:hover,
+.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item a:focus {
     background: rgba(0,0,0,.3);
+    transition: background .2s ease-in;
 }
 
 /* BREADCRUMB */
@@ -287,6 +282,12 @@ main {
     overflow: hidden;
     background: #fae9d3;
     font-size: .875rem;
+}
+
+.page-node-type-outbreak-standard main,
+.page-node-type-outbreak-response main,
+.path-current-responses-to-outbreaks main {
+    background-color: white;
 }
 
 main h1,
