@@ -16,6 +16,3 @@ jQuery(".region.region-primary-menu span.sub-menu-arrow").keypress(function(e){
 	    jQuery(this).html(jQuery(this).html().charCodeAt(0) == "8744" ? "&#8743;" : "&#8744;");
     }
 });
-
-//Wrap H1 tags around titles in pages
-jQuery(".block-entity-fieldnodetitle").wrap("<h1></h1>");
