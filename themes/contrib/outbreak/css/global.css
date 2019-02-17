@@ -419,3 +419,39 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.field__item:hover {
     background: #bb523d;
 }
+
+@media only screen and (min-width: 768px) {
+    /* HEADER */
+    div#block-outbreak-sitebranding {
+        width: 100%;
+    }
+
+    div#block-outbreak-sitebranding img {
+        width: 135px;
+    }
+
+    div#block-outbreak-sitebranding a {
+        font-size: 33x;
+        font-size: 2rem;
+    }
+
+    /* PRIMARY MENU */
+    nav#block-toplinks {
+        display: flex;
+        flex: 0 1 45%;
+    }
+
+    div#block-outbreak-exposedformcontent-searchpage-1 {
+        display: flex;
+        flex: 0 1 55%
+    }
+
+    div#block-outbreak-exposedformcontent-searchpage-1 > form {
+        width: 100%;
+    }
+
+    /* BREADCRUMB */
+    nav.breadcrumb {
+        display: block;
+    }
+}
