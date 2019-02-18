@@ -1,6 +1,3 @@
-//Search placeholder text
-jQuery('#views-exposed-form-content-search-page-1 input[type="text"]').attr('placeholder','Search...');
-
 //Main menu mobile toggle
 jQuery(".region.region-primary-menu a.main-menu-mobile-link").click(function() {
     jQuery(".region.region-primary-menu .main-menu-items-wrapper").slideToggle();
