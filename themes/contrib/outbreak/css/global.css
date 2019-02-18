@@ -1,10 +1,12 @@
 /* HEADER */
 .region.region-header {
-    display: flex;
-    flex-wrap: wrap;
-    /*align-items: center;*/
     background: #d2752e;
     color: white;
+}
+
+.region-header-inner-wrapper {
+    display: flex;
+    flex-wrap: wrap;
 }
 
 div#block-outbreak-sitebranding {
@@ -435,7 +437,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         font-size: 2rem;
     }
 
-    /* PRIMARY MENU */
     nav#block-toplinks {
         display: flex;
         flex: 0 1 45%;
@@ -453,5 +454,90 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
     /* BREADCRUMB */
     nav.breadcrumb {
         display: block;
+    }
+}
+
+@media only screen and (min-width: 1170px) {
+    /* HEADER */
+    .region-header-inner-wrapper {
+        display: -ms-grid;
+        display: grid;
+        max-width: 1170px;
+        margin: auto;
+        -ms-grid-columns: 60% 10% 30%;
+        grid-template-columns: [col-start] 60% [col-start] 10% [col-start] 30%;
+    }
+    
+    div#block-outbreak-sitebranding {
+        -ms-grid-row: 1;
+        -ms-grid-column: 1;
+        grid-column-start: col-start 1;
+        -ms-grid-row-span: 2;
+        grid-row-end: span 2;
+    }
+
+    nav#block-toplinks {
+        -ms-grid-column: 3;
+        grid-column-start: col-start 3;
+        -ms-grid-row-align: end;
+        align-self: end;
+    }
+    
+    div#block-outbreak-exposedformcontent-searchpage-1 {
+        -ms-grid-row: 2;
+        -ms-grid-column: 3;
+        grid-column-start: col-start 3;
+    }
+
+    div#block-outbreak-exposedformcontent-searchpage-1 div#edit-actions {
+        width: auto;
+    }
+
+    /* PRIMARY MENU */
+    .region.region-primary-menu {
+        padding: 0px;
+    }
+
+    .region.region-primary-menu .main-menu-items-wrapper {
+        display: block;
+        margin: 0px;
+    }
+
+    .region.region-primary-menu a.main-menu-mobile-link {
+        display: none;
+    }
+
+    .region.region-primary-menu ul.menu {
+        margin: 0px;
+        display: flex;
+        min-height: 72px;
+    }
+
+    .region.region-primary-menu li.menu-item {
+        background: none;
+        display: flex;
+        flex: 1 1 0;
+        margin: 0;
+    }
+
+    .region.region-primary-menu li.menu-item a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .region.region-primary-menu .menu-item-wrapper {
+        background: none;
+        width: 100%;
+        margin: 0;
+    }
+
+    .region.region-primary-menu span.sub-menu-arrow {
+        display: none;
+    }
+
+    .region.region-primary-menu li.menu-item a:hover, .region.region-primary-menu li.menu-item a:focus {
+        background: #bb523d;
     }
 }
