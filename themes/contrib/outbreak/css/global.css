@@ -31,10 +31,6 @@ div#block-outbreak-sitebranding a {
     color: white;
 }
 
-div#block-outbreak-sitebranding a:hover {
-    text-decoration: underline;
-}
-
 nav#block-toplinks {
     width: 100%;
     background: #343434;
@@ -351,17 +347,9 @@ main a:focus {
 }
 
 /* LEFT NAVIGATION */
-main .main-menu-wrapper {
+nav#block-secondarynavigation {
     display: none;
 }
-
-/* SECOND REGION (RIGHT) */
-/*.layout--twocol > .layout__region--second {
-    flex: 0 1 100%;
-    background: white;
-    padding: 10px;
-    padding: 0.625em;
-}*/
 
 /* FOOTER */
 footer {
@@ -591,11 +579,10 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         left: 0px;
         z-index: 99999;
         background: #a3311a;
-        width: 100%
-    }
-
-    .region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded {
         display: none;
+        flex-direction: column;
+        min-width: 250px;
+        width: 100%
     }
 
     .region.region-primary-menu ul.menu ul.menu a {
@@ -604,8 +591,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--expanded:hover > ul.menu {
         display: flex;
-        flex-direction: column;
-        min-width: 250px;
     }
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item {
@@ -662,8 +647,10 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         -ms-grid-columns: 25% 10px auto;
         grid-template-columns: [col-start] 25% [col-start] 10px [col-start] auto;
     }
-
-    nav#block-outbreak-mainnavigation-2 {
+    
+    /* LEFT NAVIGATION */
+    nav#block-secondarynavigation {
+        display: block;
         -ms-grid-column: 1;
         -ms-grid-row: 1;
         -ms-grid-row-span: 2;
@@ -671,11 +658,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         grid-row-end: span 2;
         padding: 10px 0 0 10px;
         padding: .625em 0 0 .625em;
-        
-    }
-
-    main .main-menu-wrapper {
-        display: block;
     }
 
     div#block-outbreak-pagetitle {
@@ -696,5 +678,31 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .view.view-current-responses-to-outbreaks {
         overflow: hidden;
+    }
+
+    /* FOOTER */
+    footer .region.region-footer {
+        max-width: 1170px;
+        margin: auto;
+        color: white;
+    }
+    
+    footer .menu {
+        display: flex;
+        justify-content: center;
+    }
+
+    footer .menu-item:after {
+        padding: 0 .5em;
+        content: "|";
+    }
+
+    footer .menu-item:last-child {
+        margin:0.5em 0;
+    }
+
+    footer .menu-item:last-child:after {
+        margin: 0px;
+        content: none;
     }
 }
