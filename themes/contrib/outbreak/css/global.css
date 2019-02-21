@@ -383,9 +383,24 @@ footer .menu-item:last-child {
     margin: 0;
 }
 
-/* Components */
+/* VIEWS */
+.view.view-current-responses-to-outbreaks p {
+    margin-top: 0px;   
+}
 
-/* Node list */
+.outbreak-list-state-territory-outer {
+    display: flex;   
+}
+
+.view-grouping-header {
+    margin-top: .5em;
+    font-size: 18px;
+    font-size: 1.125rem;
+    font-weight: bold;
+}
+
+/* COMPONENTS */
+/* NODE LIST */
 main .field--name-field-feature-boxes {
     margin-top: 10px;
 }
