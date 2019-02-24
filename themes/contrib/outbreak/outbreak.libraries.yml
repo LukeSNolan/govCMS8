@@ -8,3 +8,7 @@ global-styling:
   js:
     js/slick.min.js: {}
     js/global.js: {}
+fonts:
+  css:
+    theme:
+      https://use.fontawesome.com/releases/v5.7.2/css/all.css: { type: external, minified: true }
