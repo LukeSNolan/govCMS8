@@ -410,9 +410,8 @@ footer .menu-item:last-child {
 /* COMPONENTS */
 /* CAROUSEL */
 .carousel,
-.carousel .slick-dots {
+.carousel-controls {
     background: #343434;
-    padding-bottom: 10px;
 }
 
 .slick-dotted.slick-slider {
@@ -425,7 +424,7 @@ footer .menu-item:last-child {
     margin-top: 0;
     font-size: 27px;
     font-size: 1.35rem;
-    font-size: 18px; /* Temp */
+    font-size: 18px; /* Temp - Change when font family changes */
 }
 
 .carousel-item-main-container {
@@ -436,6 +435,7 @@ footer .menu-item:last-child {
 
 .carousel .carousel-item {
     padding: 15px;
+    padding-bottom: 0px;
 }
 
 .carousel img.carousel-item-image {
@@ -478,14 +478,53 @@ footer .menu-item:last-child {
     transition: all .2s ease-in;
 }
 
+.carousel-controls {
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.carousel-autoplay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    border: none;
+    background: transparent;
+    padding-top: 0px;
+    height: 20px;
+    font-size: 0px;   
+    color: transparent;
+}
+
+.carousel-autoplay:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    font-size: 14px;
+    font-size: .875rem;
+    color: white;
+    content: "\f04c";
+}
+
+.carousel-autoplay.paused:before {
+    content: "\f04b";
+}
+
 .slick-dots {
     position: static;
+    padding: 10px 0px;
+}
+
+.slick-dots li button,
+.slick-dots li button:before {
+    font-size: 14px;
+    font-size: .875rem;
+}
+
+.slick-dots li button {
+    user-select: none;
 }
 
 .slick-dots li button:before {
     font-family: "Font Awesome 5 Free";
-    font-size: 14px;
-    font-size: .875rem;
     color: #fae9d3;
     opacity: 100;
     content: "\f111";
@@ -502,16 +541,40 @@ footer .menu-item:last-child {
     flex-wrap: wrap;
     margin: 0;
     padding: 0;
+    background: #e7d7b3;
     list-style: none;
 }
 
 .carousel-state-selector-list-item {
+    box-sizing: border-box;
     width: 50%;
+    border-top: white solid 1px;
+    border-left: white solid 1px;
+}
+
+.carousel-state-selector-list-item:nth-child(2n) {
+    border-right: white solid 1px;
+}
+
+.carousel-state-selector-list-item:nth-last-child(-n+2) {
+    border-bottom: white 1px solid;
 }
 
 .carousel-state-selector-list-item button {
     width: 100%;
     min-height: 70px;
+    background: none;
+    border: none;
+}
+
+.carousel-state-selector-list-item button:hover,
+.carousel-state-selector-list-item button:focus {
+    background: rgba(0,0,0,.1);
+}
+
+.carousel-state-selector-list-item.active button {
+    background: #bb523d;
+    color: white;
 }
 
 /* NODE LIST */
@@ -525,6 +588,7 @@ main .field--name-field-feature-boxes img {
 }
 
 main .field--name-field-feature-boxes p {
+    margin-bottom: 9px;
     font-size: 16px;
     font-weight: normal;
 }
@@ -604,8 +668,30 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         display: block;
     }
 
+    .carousel-autoplay {
+        position: absolute;
+        top: -25px;
+        left: 20px;
+    }
+    
+    .carousel-autoplay:before {
+        color: #343434;
+    }
+
     .carousel-state-selector-list-item {
         width: 25%;
+    }
+    
+    .carousel-state-selector-list-item:nth-child(2n) {
+        border-right: none;
+    }
+
+    .carousel-state-selector-list-item:nth-child(4n) {
+        border-right: white 1px solid;
+    }
+    
+    .carousel-state-selector-list-item:nth-last-child(-n+4) {
+        border-bottom: white 1px solid;
     }
 
     /* NODE LIST */

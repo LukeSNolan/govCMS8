@@ -41,7 +41,7 @@ var myResponse;
 //Home Carousel
 (function insertOutbreakCarousel() {
     var queryUrl = "rest/views/outbreak-responses-carousel";
-    var carouselHtml = "<div class='carousel' data-slick='{\"arrows\": false, \"dots\": true, \"swipe\": false, \"fade\": true}'>";
+    var carouselHtml = "<div class='carousel' data-slick='{\"arrows\": false, \"dots\": true, \"appendDots\": \".carousel-controls\", \"autoplay\": true, \"autoplaySpeed\": 4000, \"swipe\": false, \"fade\": true, \"speed\": 200}'>";
     var carouselStatePickerHtml = "<ul class='carousel-state-selector-list'>";
 
     executeQuery(queryUrl, function(r){
@@ -79,7 +79,8 @@ var myResponse;
                 carouselHtml += "<ul class='carousel-item-list'>";
                 carouselHtml += (this.outbreak != "") ? "<li class='carousel-item-li'><a href='" + this.outbreak_link + "'>" + this.outbreak + "</a>" : "<li class='carousel-item-li no-response'>" + noCurrentResponsesText;
                 carouselHtml += "</li>";
-                carouselStatePickerHtml += "<li class='carousel-state-selector-list-item' aria-hidden='true'><button type='button' data-slide='" + stateIndex + "'>" + currentState + "</button></li>"
+                carouselStatePickerHtml += (stateIndex == 0) ? "<li class='carousel-state-selector-list-item active' aria-hidden='true'>" : "<li class='carousel-state-selector-list-item' aria-hidden='true'>";
+                carouselStatePickerHtml += "<button type='button' data-slide='" + stateIndex + "'>" + currentState + "</button></li>"
             } else {
                 carouselHtml += (this.outbreak != "") ? "<li class='carousel-item-li'><a href='" + this.outbreak_link + "'>" + this.outbreak + "</a>" : "<li class='carousel-item-li no-response'>" + noCurrentResponsesText;
                 carouselHtml += "</li>";
@@ -88,9 +89,37 @@ var myResponse;
             noCurrentResponsesText = "No current responses";
         });
 
-        carouselHtml += "</ul></div></div></div>";
-        jQuery('#block-homepagecarousel').html(carouselHtml + carouselStatePickerHtml);
+        carouselHtml += "</ul></div></div></div><div class='carousel-controls'><button class='carousel-autoplay'>Toggle autoplay</button></div>";
+        jQuery('#block-homepagecarousel').html(carouselHtml);
         jQuery('.carousel').slick();
-    });
+        jQuery('.carousel-controls').append(carouselStatePickerHtml);
+
+        //Sync carousel dots with state picker
+        jQuery('.carousel').on('beforeChange', function(event, slick, currentSlide, nextSlide){
+            jQuery('.carousel-state-selector-list-item.active').removeClass('active');
+            jQuery('.carousel-state-selector-list-item').eq(nextSlide).addClass('active');
+        });
+        
+        //Control slides with state picker
+        jQuery(".carousel-state-selector-list-item button").click(function() {
+            var stateListButton = jQuery(this);
+            var stateListItem = stateListButton.parent();
     
+            if(!stateListItem.hasClass('active')) {
+                jQuery('.carousel').slick('slickGoTo', stateListButton.data("slide"));
+            }
+        });
+
+        jQuery(".carousel-autoplay").click(function() {
+            var autoplayButton = jQuery(this);
+
+            if(autoplayButton.hasClass('paused')) {
+                jQuery('.carousel').slick('slickPlay');
+            } else {
+                jQuery('.carousel').slick('slickPause');
+            }
+
+            autoplayButton.toggleClass('paused');
+        });
+    });
 }());
