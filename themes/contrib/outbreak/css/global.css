@@ -83,6 +83,7 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form-actions {
 
 div#block-outbreak-exposedformcontent-searchpage-1 .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-keys.form-item-keys {
     display: flex;
+    flex-grow: 1;
     width: 82%;
     margin-right: 0px;
 }
@@ -114,10 +115,18 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="text"] {
     padding-right: .8em;
 }
 
-div#block-outbreak-exposedformcontent-searchpage-1 input[type="submit"] {
+div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"] {
     width: 100%;
     background: #343434;
     border: 1px solid #3d3d3d;
+    font-size: 0px;
+}
+
+div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    font-size: 22px;
+    content: "\f002";
 }
 
 /* PRIMARY MENU */
@@ -355,6 +364,21 @@ main a:focus {
     text-decoration: underline;
 }
 
+main a[target="_blank"] {
+    position: relative;
+}
+
+main a[target="_blank"]:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    content: "\f35d";
+    font-size: 10px;
+    font-size: .65rem;
+    margin-left: 5px;
+    position: absolute;
+    top: 1px;
+}
+
 /* LEFT NAVIGATION */
 nav#block-secondarynavigation {
     display: none;
@@ -383,6 +407,7 @@ footer .menu {
 }
 
 footer .menu-item {
+    display: inherit;
     text-align: center;
     margin: 0.5em 0;
 }
@@ -392,7 +417,7 @@ footer .menu-item:last-child {
 }
 
 /* VIEWS */
-.view.view-current-responses-to-outbreaks p {
+.view-current-responses-to-outbreaks p {
     margin-top: 0px;   
 }
 
@@ -440,14 +465,19 @@ footer .menu-item:last-child {
 
 .carousel img.carousel-item-image {
     display: none;
+    width: 65%;
+}
+
+.carousel-list-wrapper {
+    position: relative;
+    flex-grow: 1;
+    background: #474747;
 }
 
 .carousel-item-list {
-    width: 100%;
     margin-top: 0;
     margin-bottom: 0;
     padding-left: 0;
-    background: #474747;
     list-style: none;
 }
 
@@ -476,6 +506,50 @@ footer .menu-item:last-child {
 .carousel .carousel-item-li a:hover {
     background: #bb523d;
     transition: all .2s ease-in;
+}
+
+.response-batch-controls {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    padding-bottom: 5px;
+    padding-bottom: .4em;
+    width: calc(100% - 40px);
+    text-align: center;
+    margin: 0px 20px;
+}
+
+.response-batch-controls a {
+    width: 50%;
+    color: white;
+    text-decoration: none;
+}
+
+.response-batch-controls a:focus,
+.response-batch-controls a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.response-batch-controls .disabled,
+.response-batch-controls .disabled:hover,
+.response-batch-controls .disabled:focus {
+    color: #999;
+    cursor: text;
+}
+
+.response-batch-controls a:before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.response-batch-controls .next-batch:before {
+    content: "\f103";
+}
+
+.response-batch-controls .previous-batch:before {
+    content: "\f102";
 }
 
 .carousel-controls {
@@ -668,6 +742,14 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         display: block;
     }
 
+    .carousel .carousel-item-li.batch-hide {
+        display: none;
+    }
+
+    .response-batch-controls {
+        display: flex;
+    }
+
     .carousel-autoplay {
         position: absolute;
         top: -25px;
@@ -746,10 +828,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         -ms-grid-row: 2;
         -ms-grid-column: 3;
         grid-column-start: col-start 3;
-    }
-
-    div#block-outbreak-exposedformcontent-searchpage-1 div#edit-actions {
-        width: auto;
     }
 
      /* PRIMARY MENU */
@@ -834,7 +912,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         display: none;
         flex-direction: column;
         min-width: 250px;
-        width: 100%
     }
 
     .region.region-primary-menu ul.menu ul.menu a {
@@ -847,6 +924,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item {
         background: none;
+        min-height: 0px;
+        flex: none;
     }
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item:not(:last-child) {
@@ -855,8 +934,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item a {
         justify-content: flex-start;
-        padding-left: 20px;
-        padding-left: 1.2em;
+        padding: .8em .5em .8em 1.2em;
         font-weight: normal;
     }
 
