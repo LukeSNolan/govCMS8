@@ -1,5 +1,49 @@
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Open Sans Regular'), local('OpenSans-Regular'),
+         url('../fonts/open-sans-v15-latin-regular.woff2') format('woff2'),
+         url('../fonts/open-sans-v15-latin-regular.woff') format('woff'),
+         url('../fonts/open-sans-v15-latin-regular.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 400;
+    src: local('Open Sans Italic'), local('OpenSans-Italic'),
+         url('../fonts/open-sans-v15-latin-italic.woff2') format('woff2'),
+         url('../fonts/open-sans-v15-latin-italic.woff') format('woff'),
+         url('../fonts/open-sans-v15-latin-italic.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: normal;
+    font-weight: 700;
+    src: local('Open Sans Bold'), local('OpenSans-Bold'),
+         url('../fonts/open-sans-v15-latin-700.woff2') format('woff2'),
+         url('../fonts/open-sans-v15-latin-700.woff') format('woff'),
+         url('../fonts/open-sans-v15-latin-700.ttf') format('truetype')
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    font-style: italic;
+    font-weight: 700;
+    src: local('Open Sans Bold Italic'), local('OpenSans-BoldItalic'),
+         url('../fonts/open-sans-v15-latin-700italic.woff2') format('woff2'),
+         url('../fonts/open-sans-v15-latin-700italic.woff') format('woff'),
+         url('../fonts/open-sans-v15-latin-700italic.ttf') format('truetype')
+}
+
 :root {
     --max-page-width: 1170px; 
+}
+
+html {
+    font-family: 'Open Sans', sans-serif;
 }
 
 body {
@@ -10,6 +54,8 @@ body {
 .region.region-header {
     background: #d2752e;
     color: white;
+    font-size: 14px;
+    font-size: .875rem;
 }
 
 .region-header-inner-wrapper {
@@ -292,12 +338,20 @@ nav.breadcrumb {
     padding-top: .5em;
     padding-left: 16px;
     padding-left: 1em;
+    font-size: 14px;
+}
+
+nav.breadcrumb li:before {
+    font-family: 'Font Awesome 5 Free';
+    font-weight: bold;
+    font-size: 12px;
+    content: '\f101';
 }
 
 nav.breadcrumb a {
+    font-weight: bold;
     color: #8e3e2e;
     text-decoration: none;
-    font-weight: bold;
 }
 
 nav.breadcrumb a:hover,
@@ -315,7 +369,8 @@ main {
 
 .page-node-type-outbreak-standard main,
 .page-node-type-outbreak-response main,
-.path-current-responses-to-outbreaks main {
+.path-current-responses-to-outbreaks main,
+.path-search main {
     background: white;
 }
 
@@ -326,14 +381,15 @@ main {
 
 main h1,
 main h2,
-main h3 {
-    margin: .5em 0 .3em;
+main h3,
+main h4 {
+    margin: .6em 0 .4em;
 }
 
 main h1 {
     color: #8e3e2e;
-    font-size: 30px;
-    font-size: 1.875rem;
+    font-size: 28px;
+    font-size: 1.75rem;
     font-weight: normal;
     line-height: 36px;
     line-height: 2rem;
@@ -341,16 +397,25 @@ main h1 {
 
 main h2 {
     color: #8c4d39;
-    font-size: 24px;
-    font-size: 1.5rem;
+    font-size: 22px;
+    font-size: 1.375rem;
     font-weight: normal;
+}
+
+main h3,
+main h4 {
+    font-size: 16px;
+    font-size: 1rem;
 }
 
 main h3 {
     color: #343434;
-    font-size: 18px;
-    font-size: 1.125rem;
     font-weight: bold;
+}
+
+main h4 {
+    color: black;
+    font-weight: normal;
 }
 
 main a {
@@ -365,7 +430,12 @@ main a:focus {
 }
 
 main a[target="_blank"] {
-    position: relative;
+    margin-right: 20px;
+}
+
+/* IE 11 oddity. Add underline to later remove underline */
+main a[target="_blank"]:after {
+    text-decoration: underline;
 }
 
 main a[target="_blank"]:after {
@@ -376,18 +446,71 @@ main a[target="_blank"]:after {
     font-size: .65rem;
     margin-left: 5px;
     position: absolute;
-    top: 1px;
+    text-decoration: none;
 }
+
+.region.region-content {
+    padding-bottom: 20px;
+ }
 
 /* LEFT NAVIGATION */
 nav#block-secondarynavigation {
     display: none;
 }
 
+/* CONTENT */
+.page-node-type-outbreak-standard #block-outbreak-mainpagecontent,
+.page-node-type-outbreak-response #block-outbreak-mainpagecontent,
+.path-current-responses-to-outbreaks #block-outbreak-mainpagecontent,
+.path-search #block-outbreak-mainpagecontent {
+    color: #343434;
+    font-size: 14px;
+    font-size: .875rem;
+}
+
+.page-node-type-outbreak-standard #block-outbreak-mainpagecontent p,
+.page-node-type-outbreak-response #block-outbreak-mainpagecontent p,
+.path-current-responses-to-outbreaks #block-outbreak-mainpagecontent p,
+.path-search #block-outbreak-mainpagecontent p {
+    margin: 0 0 .9em;
+}
+
+.field--type-image p {
+    margin: 0;
+    padding-left: 5px;
+}
+
+/* VIEWS */
+/* RESPONSES TO OUTBREAKS */
+.view-current-responses-to-outbreaks p {
+    margin-top: 0px;   
+}
+
+.view-grouping-header {
+    margin-top: .5em;
+    font-size: 16px;
+    font-size: rem;
+    font-weight: bold;
+}
+
+.outbreak-list-state-territory-outer {
+    display: flex;   
+}
+
+/* SEARCH */
+.view-content .views-field-path {
+    padding-top: 2px;
+    color: #338200;
+}
+
+
+
 /* FOOTER */
 footer {
     border-top: 10px solid #e7d7b3;
     padding-bottom: 20px;
+    font-size: 14px;
+    font-size: .9rem;
 }
 
 footer a {
@@ -414,22 +537,6 @@ footer .menu-item {
 
 footer .menu-item:last-child {
     margin: 0;
-}
-
-/* VIEWS */
-.view-current-responses-to-outbreaks p {
-    margin-top: 0px;   
-}
-
-.outbreak-list-state-territory-outer {
-    display: flex;   
-}
-
-.view-grouping-header {
-    margin-top: .5em;
-    font-size: 18px;
-    font-size: 1.125rem;
-    font-weight: bold;
 }
 
 /* COMPONENTS */
@@ -463,9 +570,13 @@ footer .menu-item:last-child {
     padding-bottom: 0px;
 }
 
-.carousel img.carousel-item-image {
+.carousel .carousel-item-image-wrapper {
     display: none;
-    width: 65%;
+    width: 70%;
+}
+
+.carousel .carousel-item-image {
+    width: 100%;
 }
 
 .carousel-list-wrapper {
@@ -514,9 +625,9 @@ footer .menu-item:last-child {
     bottom: 0;
     padding-bottom: 5px;
     padding-bottom: .4em;
-    width: calc(100% - 40px);
+    width: calc(100% - 20px);
     text-align: center;
-    margin: 0px 20px;
+    margin: 0px 10px;
 }
 
 .response-batch-controls a {
@@ -663,7 +774,7 @@ main .field--name-field-feature-boxes img {
 
 main .field--name-field-feature-boxes p {
     margin-bottom: 9px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: normal;
 }
 
@@ -698,6 +809,23 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
     background: #bb523d;
 }
 
+/* ADMINISTRATION */
+.page-node-type-outbreak-home .messages--status {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.page-node-type-outbreak-standard .messages--status,
+.page-node-type-outbreak-response .messages--status,
+.path-current-responses-to-outbreaks .messages--status,
+.path-search .messages--status {
+    -ms-grid-column: 1;
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 3;
+    grid-column-start: col-start 1;
+    grid-column-end: span 3;
+}
+
 @media only screen and (min-width: 768px) {
     /* HEADER */
     div#block-outbreak-sitebranding {
@@ -709,7 +837,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
     }
 
     div#block-outbreak-sitebranding a {
-        font-size: 33x;
+        font-size: 33px;
         font-size: 2rem;
     }
 
@@ -738,7 +866,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         border-bottom: 1px solid #fae9d3;
     }
     
-    .carousel img.carousel-item-image {
+    .carousel .carousel-item-image-wrapper {
         display: block;
     }
 
@@ -805,8 +933,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         max-width: 1170px;
         max-width: var(--max-page-width, 1170px);
         margin: auto;
-        -ms-grid-columns: 60% 10% 30%;
-        grid-template-columns: [col-start] 60% [col-start] 10% [col-start] 30%;
+        -ms-grid-columns: 65% 5% 30%;
+        grid-template-columns: [col-start] 65% [col-start] 5% [col-start] 30%;
     }
     
     div#block-outbreak-sitebranding {
@@ -822,6 +950,11 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         grid-column-start: col-start 3;
         -ms-grid-row-align: end;
         align-self: end;
+    }
+
+    nav#block-toplinks .menu-item:after {
+        margin-left: .4em;
+        margin-right: .6em;
     }
     
     div#block-outbreak-exposedformcontent-searchpage-1 {
@@ -957,7 +1090,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .page-node-type-outbreak-standard main,
     .page-node-type-outbreak-response main,
-    .path-current-responses-to-outbreaks main {
+    .path-current-responses-to-outbreaks main,
+    .path-search main {
         background: #fae9d3;
         padding-bottom: 10px;
     }
@@ -970,7 +1104,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
     
     .page-node-type-outbreak-standard .region.region-content,
     .page-node-type-outbreak-response .region.region-content,
-    .path-current-responses-to-outbreaks .region.region-content {
+    .path-current-responses-to-outbreaks .region.region-content,
+    .path-search .region.region-content {
         background: white;
         display: -ms-grid;
         display: grid;
@@ -980,6 +1115,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .page-node-type-outbreak-home .region.region-content {
         display: flex;
+        flex-wrap: wrap;
     }
     
     /* LEFT NAVIGATION */
@@ -1001,15 +1137,18 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         padding: .625em 20px 0 0;
     }
 
+    /* CONTENT */
     .page-node-type-outbreak-standard #block-outbreak-mainpagecontent,
     .page-node-type-outbreak-response #block-outbreak-mainpagecontent,
-    .path-current-responses-to-outbreaks #block-outbreak-mainpagecontent {
+    .path-current-responses-to-outbreaks #block-outbreak-mainpagecontent,
+    .path-search  #block-outbreak-mainpagecontent {
         -ms-grid-row: 2;
         -ms-grid-column: 3;
         grid-column-start: col-start 3;
         padding-right: 20px;
     }
 
+    /* VIEWS */
     .view.view-current-responses-to-outbreaks {
         overflow: hidden;
     }
@@ -1048,7 +1187,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     /* NODE LIST */
     .page-node-type-outbreak-home #block-outbreak-mainpagecontent {
-        width: 33%;
+        width: calc(33% - 14px);
         height: 100%;
         margin-left: 14px;
     }

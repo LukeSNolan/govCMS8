@@ -18,7 +18,7 @@ function executeQuery(queryUrl,successCallback) {
 }
 
 //External links open in new tab
-jQuery('a[href^="http://"]').attr({target: "_blank"});
+jQuery('a[href^="http"]').attr({target: "_blank"});
 
 //Main menu mobile toggle
 jQuery(".region.region-primary-menu a.main-menu-mobile-link").click(function() {
@@ -40,7 +40,7 @@ jQuery(".region.region-primary-menu span.sub-menu-arrow").keypress(function(e){
 });
 
 //Home Carousel
-(function insertOutbreakCarousel() {
+function insertOutbreakCarousel() {
     var responsesPerScroll = 3;
     var queryUrl = "rest/views/outbreak-responses-carousel";
     var carouselHtml = "<div class='carousel' data-slick='{\"arrows\": false, \"dots\": true, \"appendDots\": \".carousel-controls\", \"autoplay\": true, \"autoplaySpeed\": 4000, \"swipe\": false, \"fade\": true, \"speed\": 200}'>";
@@ -84,7 +84,7 @@ jQuery(".region.region-primary-menu span.sub-menu-arrow").keypress(function(e){
                 carouselHtml += "<div class='carousel-item'>";
                 carouselHtml += "<h2 class='carousel-item-heading'>Current responses to outbreaks: " + currentState + "</h2>";
                 carouselHtml += "<div class='carousel-item-main-container'>";
-                carouselHtml += "<img class='carousel-item-image' src='" + this.state_image + "' alt='Map of " + currentState + " region'>";
+                carouselHtml += "<div class='carousel-item-image-wrapper'><img class='carousel-item-image' src='" + this.state_image + "' alt='Map of " + currentState + " region'></div>";
                 carouselHtml += "<div class='carousel-list-wrapper'><ul class='carousel-item-list'>";
                 carouselHtml += (this.outbreak != "") ? "<li class='carousel-item-li'><a href='" + this.outbreak_link + "'>" + this.outbreak + "</a></li>" : "<li class='carousel-item-li no-response'>" + noCurrentResponsesText + "</li>";
                 carouselStatePickerHtml += (stateIndex == 0) ? "<li class='carousel-state-selector-list-item active' aria-hidden='true'>" : "<li class='carousel-state-selector-list-item' aria-hidden='true'>";
@@ -157,4 +157,8 @@ jQuery(".region.region-primary-menu span.sub-menu-arrow").keypress(function(e){
             autoplayButton.toggleClass('paused');
         });
     });
-}());
+}
+
+if(jQuery('#block-homepagecarousel').length) {
+    insertOutbreakCarousel();
+}
