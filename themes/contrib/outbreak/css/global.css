@@ -429,26 +429,6 @@ main a:focus {
     text-decoration: underline;
 }
 
-main a[target="_blank"] {
-    margin-right: 20px;
-}
-
-/* IE 11 oddity. Add underline to later remove underline */
-main a[target="_blank"]:after {
-    text-decoration: underline;
-}
-
-main a[target="_blank"]:after {
-    font-family: "Font Awesome 5 Free";
-    font-weight: 600;
-    content: "\f35d";
-    font-size: 10px;
-    font-size: .65rem;
-    margin-left: 5px;
-    position: absolute;
-    text-decoration: none;
-}
-
 .region.region-content {
     padding-bottom: 20px;
  }
@@ -456,6 +436,136 @@ main a[target="_blank"]:after {
 /* LEFT NAVIGATION */
 nav#block-secondarynavigation {
     display: none;
+}
+
+.secondary-menu-wrapper a {
+    text-decoration: none;
+}
+
+.secondary-nav-title {
+    position: relative;
+    background: #132d3a;
+    padding: .8em;
+    padding-left: 30px;
+}
+
+.secondary-nav-title:before {
+    position: absolute;
+    top: calc(50% - .6em);
+    left: 10px;
+    font-family: 'Font Awesome 5 Free';
+    font-size: 12px;
+    font-size: .75rem;
+    content: '\f3e5';
+    color: white;
+    font-weight: 600;
+}
+
+.secondary-nav-title a {
+    color: white;
+    font-weight: bold;
+}
+
+.secondary-nav-title a:hover,
+.secondary-nav-title a:focus {
+    color: white;
+}
+
+.secondary-menu-wrapper ul {
+    list-style: none;
+    background-color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.secondary-menu-wrapper ul.menu-level-1 > li:first-child {
+    border-top: white 1px solid;
+}
+
+.secondary-menu-wrapper li:not(:last-child)  {
+    border-bottom: white 1px solid;
+}
+
+li.has-sub {
+    position:relative;
+}
+
+.secondary-menu-wrapper li a {
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    overflow-wrap: break-word;
+    background: #fae9d3;
+    width: 100%;
+    padding: .7em 25px .7em .8em;
+    color: black;
+}
+
+.secondary-menu-wrapper li a:hover,
+.secondary-menu-wrapper li a:focus,
+.secondary-menu-wrapper li.is-active > a {
+    text-decoration: none;
+    background: #bb523d;
+    color:white;
+}
+
+.secondary-menu-wrapper li.is-active.has-sub > a:after,
+.secondary-menu-wrapper li.has-sub > a:after {
+    position: absolute;
+    top: calc(50% - .6em);
+    right: 10px;
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 600;
+}
+
+.secondary-menu-wrapper li.is-active.has-sub > a:after {
+    content: '\f0d7';
+    color: white;
+}
+
+.secondary-menu-wrapper li.has-sub > a:after {
+    content: '\f0da';
+    color: black;
+}
+
+.secondary-menu-wrapper li.has-sub a:hover:after,
+.secondary-menu-wrapper li.has-sub a:focus:after {
+    color: white;
+}
+
+ul.menu-level-2,
+ul.menu-level-3 {
+    display: none;
+}
+
+li.is-active ul.menu-level-2 {
+    display: block;
+}
+
+li.has-sub:not(.is-active):hover ul.menu-level-2,
+ul.menu-level-2 li.has-sub:hover ul.menu-level-3 {
+    display: block;
+    position:absolute;
+    right:-251px;
+    top:0px;
+    min-width: 250px;
+    z-index: 9999;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.47);
+}
+
+li.is-active ul.menu-level-2 > li:first-child {
+    border-top: 1px white solid;
+}
+
+li.is-active ul.menu-level-2 a {
+    background: #e7d7b3;
+    padding: .7em 1.6em;
+    width: 100%;
+}
+
+li.is-active ul.menu-level-2 a:hover,
+li.is-active ul.menu-level-2 a:focus {
+    background: #d26c58;
 }
 
 /* CONTENT */
@@ -473,6 +583,32 @@ nav#block-secondarynavigation {
 .path-current-responses-to-outbreaks #block-outbreak-mainpagecontent p,
 .path-search #block-outbreak-mainpagecontent p {
     margin: 0 0 .9em;
+}
+
+.page-node-type-outbreak-standard #block-outbreak-mainpagecontent a[target="_blank"],
+.page-node-type-outbreak-response #block-outbreak-mainpagecontent a[target="_blank"],
+.path-current-responses-to-outbreaks #block-outbreak-mainpagecontent a[target="_blank"] {
+    margin-right: 20px;
+}
+
+/* IE 11 oddity. Add underline to later remove underline */
+.page-node-type-outbreak-standard #block-outbreak-mainpagecontent a[target="_blank"]:after,
+.page-node-type-outbreak-response #block-outbreak-mainpagecontent a[target="_blank"]:after,
+.path-current-responses-to-outbreaks #block-outbreak-mainpagecontent a[target="_blank"]:after {
+    text-decoration: underline;
+}
+
+.page-node-type-outbreak-standard #block-outbreak-mainpagecontent a[target="_blank"]:after,
+.page-node-type-outbreak-response #block-outbreak-mainpagecontent a[target="_blank"]:after,
+.path-current-responses-to-outbreaks #block-outbreak-mainpagecontent a[target="_blank"]:after {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 600;
+    content: "\f35d";
+    font-size: 10px;
+    font-size: .65rem;
+    margin-left: 5px;
+    position: absolute;
+    text-decoration: none;
 }
 
 .field--type-image p {
@@ -1109,8 +1245,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         background: white;
         display: -ms-grid;
         display: grid;
-        -ms-grid-columns: 25% 10px auto;
-        grid-template-columns: [col-start] 25% [col-start] 10px [col-start] auto;
+        -ms-grid-columns: 260px 30px auto;
+        grid-template-columns: [col-start] 260px [col-start] 30px [col-start] auto;
     }
 
     .page-node-type-outbreak-home .region.region-content {

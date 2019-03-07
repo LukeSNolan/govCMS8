@@ -1,0 +1,68 @@
+{#
+/**
+ * @file
+ * Theme override to display a menu.
+ *
+ * Available variables:
+ * - menu_name: The machine name of the menu.
+ * - items: A nested list of menu items. Each menu item contains:
+ *   - attributes: HTML attributes for the menu item.
+ *   - below: The menu item child items.
+ *   - title: The menu link title.
+ *   - url: The menu link url, instance of \Drupal\Core\Url
+ *   - localized_options: Menu link localized options.
+ *   - is_expanded: TRUE if the link has visible children within the current
+ *     menu tree.
+ *   - is_collapsed: TRUE if the link has children within the current menu tree
+ *     that are not currently visible.
+ *   - in_active_trail: TRUE if the link is in the active trail.
+ */
+#}
+{% import _self as menus %}
+
+{#
+  We call a macro which calls itself to render the full tree.
+  @see http://twig.sensiolabs.org/doc/tags/macro.html
+#}
+
+<div class="secondary-menu-wrapper">
+
+{{ menus.menu_links(items, attributes, 0) }}
+
+{% macro menu_links(items, attributes, menu_level) %}
+    {% import _self as menus %}
+    {% if items %}
+        {% set maxprintlevel = 3 %}
+        {% set currentpath = path('<current>') %}
+        {% set pathlist = currentpath|split('/') %}
+        {% set startlevel = (pathlist|length - 2)|render %}
+        {% if startlevel == 0 and menu_level == 0 %}
+            <div class="secondary-nav-title"><a href="/">Outbreak</a></div>
+        {% endif %}
+        {% for item in items %}
+            {% if menu_level >= startlevel %}
+                {% if loop.first %}
+                    <ul class={{"menu-level-#{menu_level - startlevel + 1}"}}>
+                {% endif %}
+                {% set classes = item.in_active_trail ? ['is-active']:[] %}
+                {% if item.below and (menu_level - startlevel) <= maxprintlevel %}
+                    {% set classes = classes|merge(['has-sub']) %}
+                    <li{{ item.attributes.addClass(classes) }}>{{ link(item.title, item.url) }}
+                    {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+                    </li>
+                {% else %}
+                    <li{{ item.attributes.addClass(classes) }}>{{ link(item.title, item.url) }}</li>
+                {% endif %}
+                {% if loop.last %}
+                    </ul>
+                {% endif %}
+            {% elseif item.in_active_trail %}
+                {% if menu_level == (startlevel - 1) %}
+                    <div class="secondary-nav-title">{{ link(item.title, item.url) }}</div>
+                {% endif %}
+                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+            {% endif %}
+        {% endfor %}
+    {% endif %}
+{% endmacro %}
+</div>
