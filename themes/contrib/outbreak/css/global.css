@@ -266,9 +266,6 @@ div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
     display: flex;
     border-radius: 2px 0px 0px 2px;
     margin-bottom: 2px;
-}
-
-.region.region-primary-menu .main-menu-items-wrapper > ul.menu > .menu-item > .menu-item-wrapper {
     background: rgba(0,0,0,.2);
 }
 
@@ -317,14 +314,6 @@ div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
 .region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item a:focus {
     background: rgba(0,0,0,.3);
     transition: background .2s ease-in;
-}
-
-.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item span.sub-menu-arrow {
-	display: none;
-}
-
-.region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item > ul.mobile-sub-menu-expanded {
-    display: none;
 }
 
 /* BREADCRUMB */
@@ -1117,7 +1106,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
     }
 
     .region.region-primary-menu .main-menu-items-wrapper {
-        display: block;
+        display: block !important; /* Cater for Jquery slidetoggle state in mobile view */
         margin: 0px;
     }
 
@@ -1154,12 +1143,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         width: 100%;
         margin: 0;
     }
-    
-    .region.region-primary-menu .main-menu-items-wrapper > ul.menu > .menu-item > .menu-item-wrapper {
-        background: none;
-        width: 100%;
-        margin: 0;
-    }
 
     .region.region-primary-menu li.menu-item a:hover,
     .region.region-primary-menu li.menu-item a:focus,
@@ -1187,7 +1170,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         background: #bb523d;
     }
 
-    .region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--expanded:hover > ul.menu {
+    .region.region-primary-menu li.menu-item--expanded:hover ul.menu {
         display: flex;
     }
 
