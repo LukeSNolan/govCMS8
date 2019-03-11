@@ -88,8 +88,12 @@ nav#block-toplinks {
 
 nav#block-toplinks .menu {
     display: flex;
-    margin-top: .5em;
-    margin-bottom: .5em;
+    margin-top: .7em;
+    margin-bottom: .7em;
+}
+
+.menu-item {
+    padding-top: 0px;
 }
 
 nav#block-toplinks .menu-item:after {
@@ -130,7 +134,6 @@ div#block-outbreak-exposedformcontent-searchpage-1 .form-actions {
 div#block-outbreak-exposedformcontent-searchpage-1 .js-form-item.form-item.js-form-type-textfield.form-type-textfield.js-form-item-keys.form-item-keys {
     display: flex;
     flex-grow: 1;
-    width: 82%;
     margin-right: 0px;
 }
 
@@ -140,8 +143,8 @@ div#block-outbreak-exposedformcontent-searchpage-1 label {
 
 div#block-outbreak-exposedformcontent-searchpage-1 input {
     border: none;
-    padding-top: .6em;
-    padding-bottom: .6em;
+    padding-top: .7em;
+    padding-bottom: .7em;
 }
 
 div#block-outbreak-exposedformcontent-searchpage-1 input[type="text"] {
@@ -150,7 +153,7 @@ div#block-outbreak-exposedformcontent-searchpage-1 input[type="text"] {
 
 div#block-outbreak-exposedformcontent-searchpage-1 div#edit-actions {
     display: flex;
-    width: 18%;
+    width: 60px;
 }
 
 div#block-outbreak-exposedformcontent-searchpage-1 input[type="text"] {
@@ -236,23 +239,18 @@ div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
 .region.region-primary-menu li.menu-item {
     background: rgba(0,0,0,.2);
     border-radius: 2px;
-    padding-top: 0px;
     margin-bottom: 2px;
     list-style: none;
 }
 
-.region.region-primary-menu li.menu-item--expanded {
+.region.region-primary-menu li.has-sub {
     background: none;
-}
-
-.region.region-primary-menu li.menu-item a,
-.region.region-primary-menu span.sub-menu-arrow {
-    padding: 10px;
-    padding: .6rem;
 }
 
 .region.region-primary-menu li.menu-item a {
     display: block;
+    padding: 10px;
+    padding: .6rem;
     text-decoration: none;
 }
 
@@ -270,7 +268,7 @@ div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
 }
 
 .region.region-primary-menu .menu-item-wrapper > a {
-    flex: 15;
+    flex-grow: 1;
 }
 
 .region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--active-trail > a,
@@ -278,19 +276,39 @@ div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
     background: rgba(0,0,0,.5);
 }
 
-.region.region-primary-menu span.sub-menu-arrow {
-    flex: 1;
+.region.region-primary-menu button.sub-menu-arrow {
+    width: 50px;
     background: rgba(0,0,0,.3);
+    border: none;
     border-radius: 2px;
-    text-align: center;
+    padding: 0 .6rem;
     cursor: pointer;
-    font-weight: bold;
+    font-size: 0px;
 }
 
-.region.region-primary-menu span.sub-menu-arrow:hover,
-.region.region-primary-menu span.sub-menu-arrow:focus {
+.region.region-primary-menu button.sub-menu-arrow:after {
+    font-family: "Font Awesome 5 Free";
+    font-size: 24px;
+    font-weight: 600;
+    content: "\f107";
+}
+
+.region.region-primary-menu button.sub-menu-arrow.active:after {
+    content: "\f106";
+}
+
+.region.region-primary-menu button.sub-menu-arrow:hover,
+.region.region-primary-menu button.sub-menu-arrow:focus {
     background: rgba(0,0,0,.5);
     transition: background .2s ease-in;
+}
+
+.region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--active-trail > .menu-item-wrapper > button.sub-menu-arrow {
+    background: rgba(0,0,0,.6);
+}
+
+.region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--active-trail > .menu-item-wrapper > button.sub-menu-arrow:hover {
+    background: rgba(0,0,0,.8);
 }
 
 .region.region-primary-menu ul.menu ul.menu {
@@ -532,7 +550,9 @@ li.is-active ul.menu-level-2 {
 }
 
 li.has-sub:not(.is-active):hover ul.menu-level-2,
-ul.menu-level-2 li.has-sub:hover ul.menu-level-3 {
+li.has-sub:not(.is-active)[aria-expanded="true"] ul.menu-level-2,
+ul.menu-level-2 li.has-sub:hover ul.menu-level-3,
+ul.menu-level-2 li.has-sub[aria-expanded="true"] ul.menu-level-3 {
     display: block;
     position:absolute;
     right:-251px;
@@ -692,12 +712,11 @@ footer .menu-item:last-child {
 
 .carousel .carousel-item {
     padding: 15px;
-    padding-bottom: 0px;
 }
 
 .carousel .carousel-item-image-wrapper {
     display: none;
-    width: 70%;
+    width: 65%;
 }
 
 .carousel .carousel-item-image {
@@ -898,7 +917,7 @@ main .field--name-field-feature-boxes img {
 }
 
 main .field--name-field-feature-boxes p {
-    margin-bottom: 9px;
+    margin-bottom: 5px;
     font-size: 14px;
     font-weight: normal;
 }
@@ -968,12 +987,12 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     nav#block-toplinks {
         display: flex;
-        flex: 0 1 45%;
+        flex: 0 1 60%;
     }
 
     div#block-outbreak-exposedformcontent-searchpage-1 {
         display: flex;
-        flex: 0 1 55%
+        flex: 0 1 40%
     }
 
     div#block-outbreak-exposedformcontent-searchpage-1 > form {
@@ -1005,7 +1024,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .carousel-autoplay {
         position: absolute;
-        top: -25px;
+        top: -35px;
         left: 20px;
     }
     
@@ -1124,6 +1143,10 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         min-height: 73px;
     }
 
+    .region.region-primary-menu li.has-sub:hover {
+        background: #bb523d;
+    }
+
     .region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item {
         border-right: #a3311a solid 1px;
     }
@@ -1146,12 +1169,13 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     .region.region-primary-menu li.menu-item a:hover,
     .region.region-primary-menu li.menu-item a:focus,
+    .region.region-primary-menu li.has-sub[aria-expanded="true"] a,
     .region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--active-trail > a,
     .region.region-primary-menu .main-menu-items-wrapper > ul.menu > li.menu-item--active-trail > .menu-item-wrapper > a {
         background: #bb523d;
     }
 
-    .region.region-primary-menu span.sub-menu-arrow {
+    .region.region-primary-menu button.sub-menu-arrow {
         display: none;
     }
 
@@ -1162,7 +1186,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         z-index: 99999;
         background: #a3311a;
         display: none;
-        flex-direction: column;
         min-width: 250px;
     }
 
@@ -1170,14 +1193,15 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         background: #bb523d;
     }
 
-    .region.region-primary-menu li.menu-item--expanded:hover ul.menu {
-        display: flex;
+    .region.region-primary-menu li.has-sub:hover ul.menu,
+    .region.region-primary-menu li.has-sub[aria-expanded="true"] ul.menu {
+        display: block;
     }
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item {
         background: none;
         min-height: 0px;
-        flex: none;
+        display: block;
     }
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item:not(:last-child) {
@@ -1185,7 +1209,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
     }
 
     .region.region-primary-menu ul.menu ul.menu li.menu-item a {
-        justify-content: flex-start;
+        display: block;
+        box-sizing: border-box;
         padding: .8em .5em .8em 1.2em;
         font-weight: normal;
     }
@@ -1249,6 +1274,7 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         padding: .625em 0 0 .625em;
     }
 
+    /* CONTENT */
     div#block-outbreak-pagetitle {
         -ms-grid-column: 3;
         grid-column-start: col-start 3;
@@ -1256,7 +1282,6 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
         padding: .625em 20px 0 0;
     }
 
-    /* CONTENT */
     .page-node-type-outbreak-standard #block-outbreak-mainpagecontent,
     .page-node-type-outbreak-response #block-outbreak-mainpagecontent,
     .path-current-responses-to-outbreaks #block-outbreak-mainpagecontent,

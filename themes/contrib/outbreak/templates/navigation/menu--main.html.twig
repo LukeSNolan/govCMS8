@@ -19,47 +19,42 @@
  */
 #}
 {% import _self as menus %}
-
 <div class="main-menu-wrapper">
-    <a class="main-menu-mobile-link" href="javascript:void(0)"><span class="main-menu-mobile-icon"></span>Main Menu</a>          
-    <div class="main-menu-items-wrapper">
+<a class="main-menu-mobile-link" href="javascript:void(0)"><span class="main-menu-mobile-icon"></span>Main Menu</a>          
+<div class="main-menu-items-wrapper">
+{{ items ? '<ul class="menu">' : '' }}
+
 {#
   We call a macro which calls itself to render the full tree.
   @see http://twig.sensiolabs.org/doc/tags/macro.html
 #}
-{{ menus.menu_links(items, attributes, 0, false) }}
+{{ menus.menu_links(items, attributes, 0) }}
 
-{% macro menu_links(items, attributes, menu_level, expand) %}
+{% macro menu_links(items, attributes, menu_level) %}
     {% import _self as menus %}
     {% if items %}
         {% set maxprintlevel = 1 %}
-        {% set listclasses = [
-            'menu',
-            expand ? 'mobile-sub-menu-expanded',
-        ] %}
-        <ul{{ attributes.addClass(listclasses) }}>
         {% for item in items %}
             {% set classes = [
                 'menu-item',
-                item.is_expanded and menu_level < maxprintlevel ? 'menu-item--expanded',
+                item.is_expanded and menu_level < maxprintlevel ? 'has-sub',
                 item.in_active_trail ? 'menu-item--active-trail',
             ] %}
-            <li{{ item.attributes.addClass(classes) }}>
-            {% if item.is_expanded and menu_level < maxprintlevel %}
+            {% if item.is_expanded and menu_level < maxprintlevel and item.below %}
+                <li{{ item.attributes.addClass(classes) }} aria-expanded="false">
                 <div class="menu-item-wrapper">
-            {% endif %}
-            {{ link(item.title, item.url) }}
-            {% if item.is_expanded and menu_level < maxprintlevel %}
+                {{ link(item.title, item.url) }}
                 {% if item.in_active_trail %}
-                    <span class="sub-menu-arrow" tabindex="0">∧</span>
-                    {% set expand = TRUE %}
+                    <button class="sub-menu-arrow active">Toggle menu</button></div>
+                    <ul class="menu mobile-sub-menu-expanded">
                 {% else %}
-                    <span class="sub-menu-arrow" tabindex="0">∨</span>
+                    <button class="sub-menu-arrow">Toggle menu</button></div>
+                    <ul class="menu">
                 {% endif %}
-            </div>
-            {% endif %}
-            {% if item.below and menu_level < maxprintlevel %}
-                {{ menus.menu_links(item.below, attributes, menu_level + 1, expand) }}
+                {{ menus.menu_links(item.below, attributes, menu_level + 1) }}
+            {% else %}
+                <li{{ item.attributes.addClass(classes) }}>
+                {{ link(item.title, item.url) }}
             {% endif %}
             </li>
         {% endfor %}

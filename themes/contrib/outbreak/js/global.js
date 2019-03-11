@@ -1,7 +1,4 @@
-/**
- *	Executes ajax query to fetch data from list
- *	@params query sting and success call back function
- */
+// Execute ajax query
 function executeQuery(queryUrl,successCallback) {
 	jQuery.ajax({
 		url: queryUrl,
@@ -11,35 +8,56 @@ function executeQuery(queryUrl,successCallback) {
 			"X-RequestDigest": jQuery("#__REQUESTDIGEST").val()
 		},
 		success: successCallback,
-		error: function (error) {
-			//console.log(JSON.stringify(error));
-		}
+		error: function (error) {}
 	});
 }
+
+//IE Edge fix. Re-render list items so text decoration css is applied. Expecting fix in later Edge release (check v44.17763).
+jQuery(function(){
+    if (/Edge/.test(navigator.userAgent)) {
+        var menu_clone;
+        var parent;
+        jQuery('.main-menu-wrapper li, .secondary-menu-wrapper li').each(function(){
+            parent = jQuery(this).parent();
+            menu_clone = jQuery(this).clone(true);
+            jQuery(this).remove();
+            menu_clone.appendTo(parent);
+        });
+    }
+});
 
 //External links open in new tab
 jQuery('a[href^="http"]').attr({target: "_blank"});
 
 //Main menu mobile toggle
-jQuery(".region.region-primary-menu a.main-menu-mobile-link").click(function() {
-    jQuery(".region.region-primary-menu .main-menu-items-wrapper").slideToggle();
+jQuery('.region.region-primary-menu a.main-menu-mobile-link').click(function() {
+    jQuery('.region.region-primary-menu .main-menu-items-wrapper').slideToggle();
 });
 
-//Main menu sub menu toggle - click
-jQuery(".region.region-primary-menu span.sub-menu-arrow").click(function() {
+//Main menu sub menu toggle on mobile view
+jQuery('.region.region-primary-menu button.sub-menu-arrow').click(function() {
     jQuery(this).parent().next().toggleClass('mobile-sub-menu-expanded');
-	jQuery(this).html(jQuery(this).html().charCodeAt(0) == "8744" ? "&#8743;" : "&#8744;");
+	jQuery(this).toggleClass('active');
 });
 
-//Main menu sub menu toggle - enter
-jQuery(".region.region-primary-menu span.sub-menu-arrow").keypress(function(e){
-    if(e.which == 13){
-        jQuery(this).parent().next().toggleClass('mobile-sub-menu-expanded');
-	    jQuery(this).html(jQuery(this).html().charCodeAt(0) == "8744" ? "&#8743;" : "&#8744;");
+//Toggle menu sub menu items on desktop - spacebar
+jQuery('.main-menu-wrapper .menu-item-wrapper a, .secondary-menu-wrapper li.has-sub:not(.is-active) > a').keypress(function(e) {
+    if(e.which == 32) {
+        e.preventDefault();
+        var expandedState = (jQuery(this).closest('li.has-sub').attr('aria-expanded') == "true");
+        jQuery(this).closest('li.has-sub').attr('aria-expanded', !expandedState);
     }
 });
 
-//Home Carousel
+//Collapse menu items on desktop - focus lost
+jQuery('.main-menu-wrapper li.has-sub, .secondary-menu-wrapper li.has-sub:not(.is-active)').focusout(function(e) {
+    var activeElement = (e.relatedTarget != null) ? e.relatedTarget : document.activeElement;
+    if(jQuery(activeElement).parents('li.has-sub[aria-expanded="true"]').length < (jQuery(this).parents('li.has-sub[aria-expanded="true"]').length + 1)) {
+        jQuery(this).attr('aria-expanded', false);
+    }
+});
+
+//Home carousel
 function insertOutbreakCarousel() {
     var responsesPerScroll = 3;
     var queryUrl = "rest/views/outbreak-responses-carousel";
