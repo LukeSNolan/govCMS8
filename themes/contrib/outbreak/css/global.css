@@ -73,7 +73,7 @@ div#block-outbreak-sitebranding img {
     width: 100px;
 }
 
-div#block-outbreak-sitebranding a {
+div#block-outbreak-sitebranding .site-name a {
     font-size: 22px;
     font-size: 1.3rem;
     font-weight: bold;
@@ -106,14 +106,14 @@ nav#block-toplinks .menu-item:last-child:after {
     content: none;
 }
 
-nav#block-toplinks a,
-nav#block-toplinks a:visited {
+nav#block-toplinks .menu a,
+nav#block-toplinks .menu a:visited {
     color: white;
     text-decoration: none;
 }
 
-nav#block-toplinks a:hover,
-nav#block-toplinks a:focus {
+nav#block-toplinks .menu a:hover,
+nav#block-toplinks .menu a:focus {
     text-decoration: underline;
 }
 
@@ -332,6 +332,27 @@ div#block-outbreak-exposedformcontent-searchpage-1 button[type="submit"]:after {
 .region.region-primary-menu ul.menu ul.mobile-sub-menu-expanded li.menu-item a:focus {
     background: rgba(0,0,0,.3);
     transition: background .2s ease-in;
+}
+
+/* ADMINISTRATION TABS */
+nav.tabs {
+    max-width: 1170px;
+    max-width: var(--max-page-width, 1170px);
+    margin: auto;
+}
+
+ul.tabs {
+    margin: 0.25em 0;
+}
+
+.tabs a {
+    color: white;
+}
+
+.tabs a:hover,
+.tabs a:focus,
+.tabs a.is-active {
+    background-color: #d2752e;
 }
 
 /* BREADCRUMB */
@@ -620,9 +641,70 @@ li.is-active ul.menu-level-2 a:focus {
     text-decoration: none;
 }
 
-.field--type-image p {
-    margin: 0;
-    padding-left: 5px;
+.align-right .field--type-image {
+    padding-left: 10px;
+}
+.align-left .field--type-image {
+    padding-right: 10px;
+}
+
+#block-outbreak-mainpagecontent table, 
+#block-outbreak-mainpagecontent th, 
+#block-outbreak-mainpagecontent td {
+	border: 1px solid #bb523d;
+	text-align: left;
+}
+
+#block-outbreak-mainpagecontent table {
+	margin: 1em 0 1.5em;
+}
+
+#block-outbreak-mainpagecontent th {
+    background-color: #bb523d;
+    padding: .5em .6em;
+    border-right: 1px solid #ffffff;
+	color: #fff;
+	font-weight: normal;
+}
+
+#block-outbreak-mainpagecontent th:last-child {
+	border-right: 1px solid #bb523d;
+}
+
+#block-outbreak-mainpagecontent th.center {
+	text-align: center;
+}
+
+#block-outbreak-mainpagecontent tr td {
+	padding: .6em .9em;
+}
+
+#block-outbreak-mainpagecontent .important-box-1,
+#block-outbreak-mainpagecontent .important-box-2,
+#block-outbreak-mainpagecontent .important-box-3,
+#block-outbreak-mainpagecontent .see-also-box {
+    padding: 1em;
+}
+
+#block-outbreak-mainpagecontent .important-box-2 {
+    background-color: #f0ecef;
+    color: #773141;
+    margin-bottom: 20px;
+    padding-left: 6px;
+}
+
+#block-outbreak-mainpagecontent .important-box-1 a,
+#block-outbreak-mainpagecontent .important-box-2 a,
+#block-outbreak-mainpagecontent .important-box-3 a,
+#block-outbreak-mainpagecontent .see-also-box a {
+    border-bottom: 1px solid #dda89e;
+}
+
+#block-outbreak-mainpagecontent .important-box-1 a:hover,
+#block-outbreak-mainpagecontent .important-box-2 a:hover,
+#block-outbreak-mainpagecontent .important-box-3 a:hover,
+#block-outbreak-mainpagecontent .see-also-box a:hover {
+    text-decoration: none;
 }
 
 /* VIEWS */
@@ -648,8 +730,6 @@ li.is-active ul.menu-level-2 a:focus {
     color: #338200;
 }
 
-
-
 /* FOOTER */
 footer {
     border-top: 10px solid #e7d7b3;
@@ -658,14 +738,14 @@ footer {
     font-size: .9rem;
 }
 
-footer a {
+footer .menu-item a {
     color: white;
     text-decoration: none;
     font-weight: bold;
 }
 
-footer a:hover,
-footer a:focus {
+footer .menu-item a:hover,
+footer .menu-item a:focus {
     text-decoration: underline;
 }
 
@@ -916,8 +996,9 @@ main .field--name-field-feature-boxes img {
     height: 100%;
 }
 
-main .field--name-field-feature-boxes p {
-    margin-bottom: 5px;
+main .field--name-field-feature-boxes .field--name-body {
+    margin-top: 14px;
+    margin-bottom: 12px;
     font-size: 14px;
     font-weight: normal;
 }
@@ -943,8 +1024,8 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 }
 
 main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.field__item:hover,
-main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.field__item:hover p,
-main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.field__item:hover a {
+main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.field__item:hover .field--name-body,
+main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.field__item:hover .stack__content a {
     transition: all 0.2s ease-in;
     color: white;
 }
@@ -978,9 +1059,10 @@ main .field--name-field-feature-boxes .paragraph--type--node-list > div > div.fi
 
     div#block-outbreak-sitebranding img {
         width: 135px;
+        height: 100%;
     }
 
-    div#block-outbreak-sitebranding a {
+    div#block-outbreak-sitebranding .site-name a {
         font-size: 33px;
         font-size: 2rem;
     }
