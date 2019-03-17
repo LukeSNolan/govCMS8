@@ -67,13 +67,15 @@ function insertOutbreakCarousel() {
     executeQuery(queryUrl, function(r){
         var lastState = "";
         var currentState;
+        var externalLink;
         var stateIndex = 0;
         var noOfResponses = 0;
         var noCurrentResponsesText = "No current responses";
 
         jQuery.each(r, function() {
             currentState = this.state;
-            
+            externalLink = (this.outbreak_link.indexOf("http") != -1) ? " target='_blank'" : "";
+
             if(!this.acronym == "") {
                 noCurrentResponsesText += " (" + this.acronym + ")";
             }
@@ -104,12 +106,12 @@ function insertOutbreakCarousel() {
                 carouselHtml += "<div class='carousel-item-main-container'>";
                 carouselHtml += "<div class='carousel-item-image-wrapper'><img class='carousel-item-image' src='" + this.state_image + "' alt='Map of " + currentState + " region'></div>";
                 carouselHtml += "<div class='carousel-list-wrapper'><ul class='carousel-item-list'>";
-                carouselHtml += (this.outbreak != "") ? "<li class='carousel-item-li'><a href='" + this.outbreak_link + "'>" + this.outbreak + "</a></li>" : "<li class='carousel-item-li no-response'>" + noCurrentResponsesText + "</li>";
+                carouselHtml += (this.outbreak != "") ? "<li class='carousel-item-li'><a href='" + this.outbreak_link + "'" + externalLink + ">" + this.outbreak + "</a></li>" : "<li class='carousel-item-li no-response'>" + noCurrentResponsesText + "</li>";
                 carouselStatePickerHtml += (stateIndex == 0) ? "<li class='carousel-state-selector-list-item active' aria-hidden='true'>" : "<li class='carousel-state-selector-list-item' aria-hidden='true'>";
                 carouselStatePickerHtml += "<button type='button' data-slide='" + stateIndex + "'>" + currentState + "</button></li>"
             } else {
                 carouselHtml += (noOfResponses >= responsesPerScroll) ? "<li class='carousel-item-li batch-hide" : "<li class='carousel-item-li";
-                carouselHtml += (this.outbreak != "") ? "'><a href='" + this.outbreak_link + "'>" + this.outbreak + "</a></li>" : " no-response'>" + noCurrentResponsesText + "</li>";
+                carouselHtml += (this.outbreak != "") ? "'><a href='" + this.outbreak_link + "'" + externalLink + ">" + this.outbreak + "</a></li>" : " no-response'>" + noCurrentResponsesText + "</li>";
             }
             
             noOfResponses++;
